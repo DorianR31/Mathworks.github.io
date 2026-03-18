@@ -60,23 +60,15 @@ footer { text-align:center; padding:10px; }
 <footer>MathWorks ⚡ Browser + AI + Huge Game Library</footer>
 
 <script>
-// PASSWORD
+// PASSWORD LOGIC
 function checkPassword(){
   let pw = document.getElementById('pwInput').value;
   if(pw==='1029'){ document.getElementById('passwordScreen').style.display='none'; }
   else{ alert('Incorrect password!'); }
 }
 
-// SEARCH / BROWSER
-function searchWeb(){ 
-  let q=document.getElementById('searchInput').value; 
-  if(q) document.getElementById('browserFrame').src='https://www.bing.com/search?q='+encodeURIComponent(q); 
-}
-function loadGame(url){ document.getElementById('browserFrame').src=url; }
-
-// GAME DATA
 const games = [
-  // ACTION
+  // -- ACTION / ADVENTURE (40+)
   {name:'Slope',url:'https://sites.google.com/view/unblocked-games100/slope',category:'Action'},
   {name:'Run 3',url:'https://www.hoodamath.com/games/top100gamesof2025.html#run3',category:'Action'},
   {name:'Moto X3M',url:'https://sites.google.com/view/unblocked-games100/motox3m',category:'Action'},
@@ -87,8 +79,16 @@ const games = [
   {name:'Helix Jump',url:'https://www.hoodamath.com/games/top100gamesof2025.html#helixjump',category:'Action'},
   {name:'Drift Boss',url:'https://www.hoodamath.com/games/top100gamesof2025.html#driftboss',category:'Action'},
   {name:'Mountain Bike Runner',url:'https://www.hoodamath.com/games/top100gamesof2025.html#mountainbikerunner',category:'Action'},
-
-  // PUZZLE
+  {name:'Slope Run',url:'https://www.hoodamath.com/games/top100gamesof2025.html#sloperun',category:'Action'},
+  {name:'Stickman Hook',url:'https://www.hoodamath.com/games/top100gamesof2025.html#stickmanhook',category:'Action'},
+  {name:'Twin Shot',url:'https://www.hoodamath.com/games/top100gamesof2025.html#twinshot',category:'Action'},
+  {name:'Mad Truck Challenge',url:'https://www.hoodamath.com/games/top100gamesof2025.html#madtruckchallenge',category:'Action'},
+  {name:'Jumping Penalty',url:'https://www.hoodamath.com/games/top100gamesof2025.html#jumpingpenalty',category:'Action'},
+  {name:'Water Slide 3D',url:'https://www.hoodamath.com/games/top100gamesof2025.html#waterslide3d',category:'Action'},
+  {name:'Police Chase',url:'https://www.hoodamath.com/games/top100gamesof2025.html#policechase',category:'Action'},
+  // (Add more action up to 50 if you want)
+  
+  // -- PUZZLE / BRAIN (40+)
   {name:'2048',url:'https://sites.google.com/view/unblocked-games100/2048',category:'Puzzle'},
   {name:'Chess',url:'https://sites.google.com/view/unblocked-games100/chess',category:'Puzzle'},
   {name:'Connect 4',url:'https://sites.google.com/view/unblocked-games100/connect4',category:'Puzzle'},
@@ -97,29 +97,40 @@ const games = [
   {name:'Cubeform',url:'https://www.hoodamath.com/games/top100gamesof2025.html#cubeform',category:'Puzzle'},
   {name:'Candy Clicker 2',url:'https://www.hoodamath.com/games/top100gamesof2025.html#candyclicker2',category:'Puzzle'},
   {name:'Four Colors',url:'https://www.hoodamath.com/games/top100gamesof2025.html#fourcolors',category:'Puzzle'},
-
-  // SPORTS
+  {name:'Math Duck',url:'https://www.hoodamath.com/games/top100gamesof2025.html#mathduck',category:'Puzzle'},
+  // (Add more puzzle to reach 40+)
+  
+  // -- SPORTS / RACING (50+)
   {name:'Basketball Random',url:'https://sites.google.com/view/unblocked-games100/basketballrandom',category:'Sports'},
   {name:'Soccer Random',url:'https://sites.google.com/view/unblocked-games100/soccerrandom',category:'Sports'},
   {name:'Volleyball Legends',url:'https://sites.google.com/view/unblocked-games100/volleyball',category:'Sports'},
   {name:'Eggy Car',url:'https://www.hoodamath.com/games/top100gamesof2025.html#eggycar',category:'Sports'},
   {name:'Wheelie Bike',url:'https://www.hoodamath.com/games/top100gamesof2025.html#wheeliebike',category:'Sports'},
   {name:'8 Ball Pool',url:'https://www.hoodamath.com/games/top100gamesof2025.html#8ballpool',category:'Sports'},
-
-  // MULTIPLAYER
+  {name:'Court Clash Basketball',url:'https://www.hoodamath.com/games/top100gamesof2025.html#courtclashbasketball',category:'Sports'},
+  {name:'Bike Hero',url:'https://www.hoodamath.com/games/top100gamesof2025.html#bikehero',category:'Sports'},
+  // (Add more sports titles to exceed 50)
+  
+  // -- MULTIPLAYER / 2-PLAYER (30+)
   {name:'Head Soccer',url:'https://sites.google.com/view/unblocked-games100/headsoccer',category:'Multiplayer'},
   {name:'Basketball Stars',url:'https://sites.google.com/view/unblocked-games100/basketballstars',category:'Multiplayer'},
   {name:'Boxing Random',url:'https://sites.google.com/view/unblocked-games100/boxingrandom',category:'Multiplayer'},
   {name:'Volley Random',url:'https://sites.google.com/view/unblocked-games100/volleyrandom',category:'Multiplayer'},
   {name:'1 on 1 Basketball',url:'https://www.hoodamath.com/games/top100gamesof2025.html#1on1basketball',category:'Multiplayer'},
-
-  // ARCADE
+  // (Add more 2-player games to reach 30)
+  
+  // -- IO & ARCADE / CLASSIC (50+)
   {name:'Flappy Bird',url:'https://www.hoodamath.com/games/top100gamesof2025.html#flappybird',category:'Arcade'},
   {name:'Dino Game',url:'https://www.hoodamath.com/games/top100gamesof2025.html#dinogame',category:'Arcade'},
   {name:'Neon Blaster',url:'https://sites.google.com/view/unblocked-games100/neonblaster',category:'Arcade'},
   {name:'Pac-Man Clone',url:'https://www.hoodamath.com/games/top100gamesof2025.html#pacman',category:'Arcade'},
-  {name:'Stick Merge',url:'https://www.hoodamath.com/games/top100gamesof2025.html#stickmerge',category:'Arcade'}
+  {name:'Stick Merge',url:'https://www.hoodamath.com/games/top100gamesof2025.html#stickmerge',category:'Arcade'},
+  // (Add more classic arcade games to exceed 50)
 ];
+
+// SEARCH & BROWSING
+function searchWeb(){ let q=document.getElementById('searchInput').value; if(q) document.getElementById('browserFrame').src='https://www.bing.com/search?q='+encodeURIComponent(q); }
+function loadGame(url){ document.getElementById('browserFrame').src=url; }
 
 // FAVORITES
 function toggleFavorite(idx){
@@ -129,42 +140,69 @@ function toggleFavorite(idx){
   renderGames(currentCategory);
 }
 
-// RENDER GAMES
 let currentCategory='All';
 function filterCategory(cat){ currentCategory=cat; renderGames(cat); }
 function showFavorites(){ currentCategory='Favorites'; renderGames(); }
+
 function renderGames(filter='All'){
-  const grid=document.getElementById('gameGrid');
+  let grid=document.getElementById('gameGrid');
   grid.innerHTML='';
-  const favs=JSON.parse(localStorage.getItem('favorites')||'[]');
+  let favs=JSON.parse(localStorage.getItem('favorites')||'[]');
   games.forEach((g,i)=>{
     if(filter==='Favorites' && !favs.includes(i)) return;
     if(filter!=='All' && filter!=='Favorites' && g.category!==filter) return;
-    const div=document.createElement('div');
+    let div=document.createElement('div');
     div.className='game-card'+(favs.includes(i)?' favorite':'');
-    div.innerHTML=`${g.name}<br><button onclick='loadGame("${g.url}")'>Play</button><br><button onclick='toggleFavorite(${i})'>⭐</button>`;
+    div.innerHTML=`${g.name}<br><button onclick='loadGame(\"${g.url}\")'>Play</button><br><button onclick='toggleFavorite(${i})'>⭐</button>`;
     grid.appendChild(div);
   });
 }
 renderGames();
-
-// KEYBOARD NAVIGATION
+</script>
+<script>
+// --- KEYBOARD NAVIGATION ---
 let selectedIndex = 0;
-function highlightCard(idx){
+
+function highlightCard(idx) {
   const cards = document.querySelectorAll('.game-card');
-  cards.forEach((c,i)=>c.style.outline = i===idx?'3px solid yellow':'none');
+  cards.forEach((c, i) => c.style.outline = i === idx ? '3px solid yellow' : 'none');
   if(cards[idx]) cards[idx].scrollIntoView({behavior:'smooth', block:'center'});
 }
+
 document.addEventListener('keydown', function(e){
   const cards = document.querySelectorAll('.game-card');
-  if(cards.length===0) return;
+  if(cards.length === 0) return;
+
   switch(e.key){
-    case 'ArrowRight': selectedIndex=(selectedIndex+1)%cards.length; highlightCard(selectedIndex); break;
-    case 'ArrowLeft': selectedIndex=(selectedIndex-1+cards.length)%cards.length; highlightCard(selectedIndex); break;
-    case 'ArrowDown': selectedIndex=Math.min(selectedIndex+3,cards.length-1); highlightCard(selectedIndex); break;
-    case 'ArrowUp': selectedIndex=Math.max(selectedIndex-3,0); highlightCard(selectedIndex); break;
-    case 'Enter': if(cards[selectedIndex]) cards[selectedIndex].querySelector('button').click(); break;
-    case 'f': case 'F': if(cards[selectedIndex]) cards[selectedIndex].querySelectorAll('button')[1].click(); break;
+    case 'ArrowRight':
+      selectedIndex = (selectedIndex + 1) % cards.length;
+      highlightCard(selectedIndex);
+      break;
+    case 'ArrowLeft':
+      selectedIndex = (selectedIndex - 1 + cards.length) % cards.length;
+      highlightCard(selectedIndex);
+      break;
+    case 'ArrowDown':
+      selectedIndex = Math.min(selectedIndex + 3, cards.length - 1);
+      highlightCard(selectedIndex);
+      break;
+    case 'ArrowUp':
+      selectedIndex = Math.max(selectedIndex - 3, 0);
+      highlightCard(selectedIndex);
+      break;
+    case 'Enter':
+      if(cards[selectedIndex]){
+        const playBtn = cards[selectedIndex].querySelector('button');
+        if(playBtn) playBtn.click();
+      }
+      break;
+    case 'f':
+    case 'F':
+      if(cards[selectedIndex]){
+        const favBtn = cards[selectedIndex].querySelectorAll('button')[1];
+        if(favBtn) favBtn.click();
+      }
+      break;
     case '1': filterCategory('Action'); break;
     case '2': filterCategory('Puzzle'); break;
     case '3': filterCategory('Sports'); break;
@@ -172,6 +210,8 @@ document.addEventListener('keydown', function(e){
     case '5': filterCategory('Arcade'); break;
   }
 });
+
+// Highlight first card initially
 highlightCard(selectedIndex);
 </script>
 </body>
